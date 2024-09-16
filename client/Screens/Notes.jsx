@@ -14,8 +14,8 @@ const Notes = () => {
     <SafeAreaView>
     <View>
       {/* <Text>Notes</Text> */}
-      {/* <NotesCreate /> */}
-      <DisplayNotes />
+      <NotesCreate />
+      {/* <DisplayNotes /> */}
     </View>
     </SafeAreaView>
   )

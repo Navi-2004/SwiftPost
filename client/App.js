@@ -13,6 +13,8 @@ import SoftSkills from './Screens/SoftSkills';
 import Profile from './Screens/Profile';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect,useState } from 'react';
+import LayoutDesign from './components/LayoutDesign';
+import CounterDetail from './components/CounterDetail';
 // import registerNNPushToken from 'native-notify';
 
 
@@ -90,6 +92,20 @@ export default function App() {
         <Stack.Screen
           name="conform"
           component={ContestForm}
+          options={{
+            headerShown: false
+          }}
+        />
+           <Stack.Screen
+          name="details"
+          component={CounterDetail}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="navigation"
+          component={LayoutDesign}
           options={{
             headerShown: false
           }}

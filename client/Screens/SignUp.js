@@ -40,45 +40,47 @@ const validateName = (name) => {
   return name.length >= 3;
 };
  
-  const handleSignUp = async () => {
-    console.log("SignUp Button Pressed");
-    if (!validateName(name)) {
-      console.log("Invalid Name");
-        Alert.alert('Invalid Name', 'Name must be at least 3 characters long.');
-        return;
-    }
-    if (!validateEmail(email)) {
-      console.log("Invalid Email");
-        Alert.alert('Invalid Email', 'Please enter a valid email address.');
-        return;
-    }
-    if (!validatePhoneNumber(phoneNumber)) {
-      console.log("Invalid Phone Number");
-        Alert.alert('Invalid Phone Number', 'Please enter a valid phone number.');
-        return;
-    }
-    if (!validatePassword(password)) {
-      console.log("Invalid Password");
-        Alert.alert('Invalid Password', 'Password must be at least 8 characters long.');
-        return;
-    }
-    try {
-      console.log(name,email,phoneNumber,password)
-      const response = await axios.post("/user/signup",{
-        name,
-        email,
-        phoneNumber,
-        password,
-      });
-      console.log("REturned")
+  const handleSignUp =  () => {
+    // console.log("SignUp Button Pressed");
+    // if (!validateName(name)) {
+    //   console.log("Invalid Name");
+    //     Alert.alert('Invalid Name', 'Name must be at least 3 characters long.');
+    //     return;
+    // }
+    // if (!validateEmail(email)) {
+    //   console.log("Invalid Email");
+    //     Alert.alert('Invalid Email', 'Please enter a valid email address.');
+    //     return;
+    // }
+    // if (!validatePhoneNumber(phoneNumber)) {
+    //   console.log("Invalid Phone Number");
+    //     Alert.alert('Invalid Phone Number', 'Please enter a valid phone number.');
+    //     return;
+    // }
+    // if (!validatePassword(password)) {
+    //   console.log("Invalid Password");
+    //     Alert.alert('Invalid Password', 'Password must be at least 8 characters long.');
+    //     return;
+    // }
+    // try {
+    //   console.log(name,email,phoneNumber,password)
+    //   const response = await axios.post("/user/signup",{
+    //     name,
+    //     email,
+    //     phoneNumber,
+    //     password,
+    //   });
+    //   console.log("REturned")
   
-      console.log("Response:", response.data);
+    //   console.log("Response:", response.data);
       
-      navigation.navigate("Login");
-    } catch (error) {
-      console.error("Error signing up:", error);
+    //   navigation.navigate("Login");
+    // } catch (error) {
+    //   console.error("Error signing up:", error);
       
-    }
+    // }
+    navigation.navigate("Login");
+
     
   };
 

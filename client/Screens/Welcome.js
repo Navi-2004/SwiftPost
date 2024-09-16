@@ -111,7 +111,7 @@ const Welcome = ({ navigation }) => {
                         <Text style={{
                             fontSize: 16,
                             color: COLORS.white,
-                        }}>Calling, Enjoy Safe and private texting</Text>
+                        }}> Enjoy Safe and fast Post Office Experience</Text>
                     </View>
 
                     <Button

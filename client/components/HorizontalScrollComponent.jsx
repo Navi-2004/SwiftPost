@@ -1,68 +1,60 @@
 import React from 'react';
-import { ScrollView, View, StyleSheet, TouchableOpacity ,Text} from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, FlatList } from 'react-native';
 import Card from './Card';
 import soft from "../assets/soft.jpg";
 import coding from "../assets/coding.jpg";
 import aptitude from "../assets/aptitude.jpg";
-import notes from "../assets/notes.png";
+import banking from "../assets/banking.jpeg";
+import payment from "../assets/payment.jpeg";
+import parcel from "../assets/parcel.jpg";
 import { useNavigation } from '@react-navigation/native';
 
 const HorizontalScrollComponent = () => {
-  // Get the navigation object from the us
   const navigation = useNavigation();
+
   const handleCardPress = (screenName) => {
-    // Navigate to the specified screen upon card press
     console.log('Navigating to', screenName);
-  
     navigation.navigate(screenName);
   };
 
+  // Data for the FlatList
+  const data = [
+    { id: '1', title: 'Parcel', image: parcel, screenName: 'Notes' },
+    { id: '2', title: 'Banking', image: banking, screenName: 'conform' },
+    { id: '3', title: 'Payment', image: payment, screenName: 'coding' },
+    { id: '4', title: 'Insurance', image: coding, screenName: 'SoftSkills' },
+    { id: '5', title: 'Navigation', image: aptitude, screenName: 'navigation' },
+    { id: '6', title: 'Q&A', image: soft, screenName: 'SoftSkills' },
+    // Add more items as needed
+  ];
+
   return (
     <View style={styles.contain}>
-            <Text style={styles.heading}>Explore Categories</Text>
-            <Text style={styles.subheading}>Tap and enjoy your Placement preparation</Text>
+      <Text style={styles.heading}>Explore Categories</Text>
+      <Text style={styles.subheading}>Tap and enjoy your Services</Text>
 
-
-    <ScrollView horizontal style={styles.scrollView}>
-      <View style={styles.container}>
-      <TouchableOpacity onPress={() => handleCardPress('Notes')}>
-          <Card
-            title="Notes"
-            image={notes}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleCardPress('conform')}>
-          <Card
-            title="Aptitude Notes"
-            image={aptitude}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleCardPress('coding')}>
-          <Card
-            title="Coding Platforms"
-            image={coding}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleCardPress('SoftSkills')}>
-          <Card
-            title="Soft Skills"
-            image={soft}
-          />
-        </TouchableOpacity>
-        {/* Add more TouchableOpacity components with appropriate onPress handlers for more cards */}
-      </View>
-    </ScrollView>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => handleCardPress(item.screenName)} style={styles.cardContainer}>
+            <Card
+              title={item.title}
+              image={item.image}
+            />
+          </TouchableOpacity>
+        )}
+        keyExtractor={(item) => item.id}
+        numColumns={2} // Set number of columns to 2
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    flexDirection: 'row',
-  },
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  cardContainer: {
+    flex: 1,
+    margin: 1,
+    // alignItems: 'center',
   },
   heading: {
     fontSize: 24,
@@ -70,8 +62,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginLeft: 10,
   },
-  contain:{
-    marginTop: 30,
+  contain: {
+    marginTop: 20,
+    marginLeft:-10,
   },
   subheading: {
     fontSize: 14,

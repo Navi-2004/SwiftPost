@@ -32,7 +32,7 @@ const Header = () => {
           style={styles.logo}
         /> */}
         {/* Title */}
-        <Text style={styles.title}>Sterry</Text>
+        <Text style={styles.title}>SwiftPost</Text>
         </View>
 
         </TouchableOpacity>

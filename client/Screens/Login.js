@@ -24,35 +24,37 @@ const Login = ({ navigation }) => {
     console.log("Login Pressed");
     console.log(email);
     console.log(password);
+    Alert.alert('Login Successful', 'You have been logged in successfully.');
+    navigation.navigate('home');
   
-    try {
-      const response = await axios.post("/user/login", {
-        email,
-        password
-      });
+    // try {
+    //   const response = await axios.post("/user/login", {
+    //     email,
+    //     password
+    //   });
   
-      console.log(response.data);
+    //   console.log(response.data);
   
-      if (response.data.user && response.data.user._id) {
-        const userId = response.data.user._id;
-        await AsyncStorage.setItem('userId', userId);
-        const id = await AsyncStorage.getItem('userId');
-        console.log('User ID stored in AsyncStorage:', id);
-        Alert.alert('Login Successful', 'You have been logged in successfully.');
-        navigation.navigate('home');
+    //   if (response.data.user && response.data.user._id) {
+    //     const userId = response.data.user._id;
+    //     await AsyncStorage.setItem('userId', userId);
+    //     const id = await AsyncStorage.getItem('userId');
+    //     console.log('User ID stored in AsyncStorage:', id);
+    //     Alert.alert('Login Successful', 'You have been logged in successfully.');
+    //     navigation.navigate('home');
 
-      } else {
-        console.log('User data or user ID not found in response');
-        Alert.alert('Error', 'An error occurred. Please try again later.');
-      }
-    } catch (error) {
-      console.log('Error:', error);
-      if (error.response && error.response.status === 401) {
-        Alert.alert('Invalid Email or Password', 'Please check your email and password and try again.');
-      } else {
-        Alert.alert('Error', 'An error occurred. Please try again later.');
-      }
-    }
+    //   } else {
+    //     console.log('User data or user ID not found in response');
+    //     Alert.alert('Error', 'An error occurred. Please try again later.');
+    //   }
+    // } catch (error) {
+    //   console.log('Error:', error);
+    //   if (error.response && error.response.status === 401) {
+    //     Alert.alert('Invalid Email or Password', 'Please check your email and password and try again.');
+    //   } else {
+    //     Alert.alert('Error', 'An error occurred. Please try again later.');
+    //   }
+    // }
   };
   
   return (
@@ -141,8 +143,8 @@ const Login = ({ navigation }) => {
               placeholder="Enter your password"
               placeholderTextColor={COLORS.black}
               secureTextEntry={isPasswordShown}
-              value={password} // Bind the state value to the input
-              onChangeText={setPassword} // Update state on change
+              value={password} 
+              onChangeText={setPassword} 
               style={{ width: "100%" }}
             />
 
